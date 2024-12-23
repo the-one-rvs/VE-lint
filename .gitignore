@@ -1,0 +1,11 @@
+venv
+.env
+demo-bash_Dockerfile.txt
+demo-bash_trivy_scan.txt
+node-app_trivy_scan.txt
+node-app_Dockerfile.txt
+pyth-img_Dockerfile.txt
+pyth-img_trivy_scan.txt
+demo-bash_solutions.txt
+node-app_solutions.txt
+pyth-img_solutions.txt
