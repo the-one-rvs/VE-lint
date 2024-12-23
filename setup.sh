@@ -32,6 +32,20 @@ fi
 
 echo "Alias 'samadhaan_cli' added successfully."
 
+if [ ! -d "$path/inputs" ]; then
+    echo "Inputs folder not found. Creating one..."
+    mkdir "$path/inputs"
+else
+    echo "Inputs folder already exists."
+fi
+
+if [ ! -d "$path/outputs" ]; then
+    echo "Outputs folder not found. Creating one..."
+    mkdir "$path/outputs"
+else
+    echo "Outputs folder already exists."
+fi
+
 if [ ! -d "$path/venv" ]; then
     echo "Virtual environment not found. Creating one..."
     python3 -m venv "$path/venv"
