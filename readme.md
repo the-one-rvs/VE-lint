@@ -47,7 +47,10 @@ GEMINI_API_KEY=your_api_key_here
 samadhaan_cli
 ```
 
-  
+<h2> Recommendations </h2>
+<p2>Ensure you’re in the directory containing the Dockerfile or specify its path.</p2>
+
+
   
 <h2>💻 Built with</h2>
 
