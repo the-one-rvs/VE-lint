@@ -50,7 +50,7 @@ samadhaan_cli
 <h2> Recommendations </h2>
 <p2>Ensure you’re in the directory containing the Dockerfile or specify its path.</p2>
 
-
+<p2>Feel free to Contibute Fork and start contributing</p2>
   
 <h2>💻 Built with</h2>
 
