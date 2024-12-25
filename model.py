@@ -22,13 +22,24 @@ model = genai.GenerativeModel(
   system_instruction="Output should contain only suggestion and solution to the particular cve in normal text format that can be written in  .txt",
 )
 
-with open("prompts/prompts_1.txt", "r") as prompt_file:
+def find_directory(name, search_path="~"):
+    search_path = os.path.expanduser(search_path)
+    for root, dirs, files in os.walk(search_path):
+        if name in dirs:
+            return os.path.join(root, name)
+    return None
+
+path = find_directory("samadhaan")
+
+print(f"Path: {path}")
+
+with open(f"{path}/prompts/prompts_1.txt", "r") as prompt_file:
     prompt_content_1 = prompt_file.read()
-with open("prompts/prompt_2.txt", "r") as prompt_file:
+with open(f"{path}/prompts/prompt_2.txt", "r") as prompt_file:
     prompt_content_2 = prompt_file.read()
-with open("prompts/prompt_3.txt", "r") as prompt_file:
+with open(f"{path}/prompts/prompt_3.txt", "r") as prompt_file:
     prompt_content_3 = prompt_file.read()
-with open("prompts/prompt_4.txt", "r") as prompt_file:
+with open(f"{path}/prompts/prompt_4.txt", "r") as prompt_file:
     prompt_content_4 = prompt_file.read()
 
 chat_session = model.start_chat(
@@ -52,7 +63,7 @@ chat_session = model.start_chat(
   ]
 )
 
-file_path = "temp.txt"
+file_path = f"{path}/temp.txt"
 
 with open(file_path, "r") as file:
     img_name = file.read().strip()
@@ -63,7 +74,7 @@ content = ""
 content += "\n\n"
 content += "Dockerfile:\n\n"
 
-file_path = f"inputs/{img_name}_trivy_scan.txt"
+file_path = f"{path}/inputs/{img_name}_trivy_scan.txt"
 
 with open(file_path, "r") as file:
     file_content = file.read()
@@ -73,7 +84,7 @@ content += file_content
 content += "\n\n"
 content += "Dockerfile:\n\n"
 
-file_path = f"inputs/{img_name}_Dockerfile.txt"
+file_path = f"{path}/inputs/{img_name}_Dockerfile.txt"
 
 with open(file_path, "r") as file:
     file_content = file.read()
@@ -85,7 +96,7 @@ content += file_content
 response = chat_session.send_message(content)
 
 
-file_write_path = f"outputs/{img_name}_solutions.txt"
+file_write_path = f"{path}/outputs/{img_name}_solutions.txt"
 
 # Open the file in write mode and write the content
 with open(file_write_path, "w") as file:
