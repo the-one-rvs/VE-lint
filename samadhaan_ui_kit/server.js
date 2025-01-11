@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 
 // Define path to the `output` folder
-const OUTPUT_FOLDER = path.join(__dirname, "../output"); // change as per directory
+const OUTPUT_FOLDER = path.join(__dirname, "../outputs"); // change as per directory
 
 // Endpoint to list all .txt files
 app.get("/files", (req, res) => {
@@ -28,5 +28,5 @@ app.get("/files/:filename", (req, res) => {
 });
 
 
-const PORT = 5000;
+const PORT = 3030;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

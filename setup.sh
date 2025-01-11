@@ -21,8 +21,10 @@ if [ ! -f "$path/runner.sh" ]; then
 fi
 
 chmod +x "$path/runner.sh"
+chmod +x "$path/ui_runner.sh"
 
 grep -qxF "alias samadhaan_cli='sh $path/runner.sh'" ~/.bashrc || echo "alias samadhaan_cli='sh $path/runner.sh'" >> ~/.bashrc
+grep -qxF "alias samadhaan_ui='sh $path/ui_runner.sh'" ~/.bashrc || echo "alias samadhaan_ui='sh $path/ui_runner.sh'" >> ~/.bashrc
 
 if [ -n "$BASH_VERSION" ]; then
     . ~/.bashrc
@@ -31,6 +33,7 @@ else
 fi
 
 echo "Alias 'samadhaan_cli' added successfully."
+echo "Alias 'samadhaan_ui' added successfully."
 
 if [ ! -d "$path/inputs" ]; then
     echo "Inputs folder not found. Creating one..."

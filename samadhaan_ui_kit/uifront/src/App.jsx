@@ -14,7 +14,7 @@ const App = () => {
 
   // Fetch available files
   useEffect(() => {
-    fetch("http://localhost:5000/files")
+    fetch("http://localhost:3030/files")
       .then((res) => res.json())
       .then((data) => setFiles(data))
       .catch((err) => console.error("Error fetching files:", err));
@@ -23,7 +23,7 @@ const App = () => {
   const toggleDarkMode = () => setDarkMode(!darkMode);
 
   const fetchFileContent = (filename) => {
-    fetch(`http://localhost:5000/files/${filename}`)
+    fetch(`http://localhost:3030/files/${filename}`)
       .then((res) => res.text())
       .then((data) => {
         setContent(data);
