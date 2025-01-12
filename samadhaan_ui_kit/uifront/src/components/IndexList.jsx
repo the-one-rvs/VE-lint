@@ -5,12 +5,14 @@ const IndexList = ({ parsedContent, darkMode }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      parsedContent.forEach((section, index) => {
-        const element = document.getElementById(`content-section-${index}`);
+      parsedContent.forEach((section, bulletIndex) => {
+        const element = document.getElementById(
+          `content-section-${bulletIndex}`
+        );
         if (element) {
           const rect = element.getBoundingClientRect();
           if (rect.top >= 0 && rect.top < window.innerHeight / 2) {
-            setActiveIndex(index);
+            setActiveIndex(bulletIndex); // Update active index
           }
         }
       });
@@ -20,8 +22,8 @@ const IndexList = ({ parsedContent, darkMode }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [parsedContent]);
 
-  const scrollToSection = (index) => {
-    const element = document.getElementById(`content-section-${index}`);
+  const scrollToSection = (bulletIndex) => {
+    const element = document.getElementById(`content-section-${bulletIndex}`);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -29,23 +31,23 @@ const IndexList = ({ parsedContent, darkMode }) => {
 
   return (
     <div
-      className={`w-full  p-4 shadow rounded-md sticky top-4 ${
+      className={`w-full p-4 shadow rounded-md sticky top-4 ${
         darkMode ? "bg-gray-800 text-white" : "bg-white text-gray-800"
       } overflow-y-auto max-h-[400px]`}
     >
       <h2 className="font-semibold text-lg mb-2">Index</h2>
       <ul className="space-y-2">
-        {parsedContent.map((section, index) => (
+        {parsedContent.map((section, bulletIndex) => (
           <li
-            key={index}
+            key={bulletIndex}
             className={`cursor-pointer ${
-              activeIndex === index
+              activeIndex === bulletIndex
                 ? darkMode
                   ? "bg-blue-600 text-white"
                   : "bg-blue-200 text-blue-900"
                 : ""
             }`}
-            onClick={() => scrollToSection(index)}
+            onClick={() => scrollToSection(bulletIndex)}
           >
             {section.heading}
           </li>
