@@ -29,7 +29,7 @@ def find_directory(name, search_path="~"):
             return os.path.join(root, name)
     return None
 
-path = find_directory("samadhaan")
+path = find_directory("VE-lint")
 
 print(f"Path: {path}")
 

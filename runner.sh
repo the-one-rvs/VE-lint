@@ -16,7 +16,7 @@ echo "Now processing the Trivy scan of the image."
 
 trivy image "$img_name" >> "${img_name}_trivy_scan.txt"
 
-path=$(find ~ -type d -name "samadhaan" 2>/dev/null)
+path=$(find ~ -type d -name "VE-lint" 2>/dev/null)
 
 mkdir -p "$path/inputs"
 
@@ -62,7 +62,7 @@ echo "$img_name" >>"$path/temp.txt"
 .  "$path/venv/bin/activate"
 "$path/venv/bin/python" "$path/model.py"
 
-echo  "\033[1mSamadhaan aa chuka hai!\033[0m"
+echo  "\033[1mLint ho gaya!\033[0m"
 
 cat "$path/outputs/${img_name}_solutions.txt"
 rm "$path/temp.txt"

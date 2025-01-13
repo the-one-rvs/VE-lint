@@ -6,8 +6,8 @@ outputs
 
 
 # dependencies
-samadhaan_ui_kit/node_modules
-samadhaan_ui_kit/uifront/node_modules
+VE-lint_ui_kit/node_modules
+VE-lint_ui_kit/uifront/node_modules
 /.pnp
 .pnp.js
 
