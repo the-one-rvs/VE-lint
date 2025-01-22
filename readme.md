@@ -47,7 +47,8 @@ GEMINI_API_KEY=your_api_key_here
 <p>5. Now Run the tool by running the command in terminal</p>
 
 ```
-samadhaan_cli
+VE-lint_cli
+VE-lint_ui
 ```
 
 <h2> Recommendations </h2>
