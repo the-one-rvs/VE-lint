@@ -14,14 +14,14 @@ if  docker --version &> /dev/null; then
     echo "Docker is already installed"
 else
     echo "Installing Docker..."
-    sh "$path/docker.sh"
+    sh "$path/bash-scripts/docker.sh"
 fi
 
 if trivy --version &> /dev/null; then
     echo "Trivy is already installed."
 else
     echo "Trivy is not installed. Installing Trivy..."
-    sh "$path/trivy.sh"
+    sh "$path/bash-scripts/trivy.sh"
 fi
 
 
@@ -30,19 +30,20 @@ if [ -z "$path" ]; then
     exit 1
 fi
 
-if [ ! -f "$path/runner.sh" ]; then
+if [ ! -f "$path/bash-scripts/runner.sh" ]; then
     echo "Error: runner.sh not found in $path"
     exit 1
 fi
 
-chmod +x "$path/runner.sh"
-chmod +x "$path/ui_runner.sh"
+chmod +x "$path/bash-scripts/runner.sh"
+chmod +x "$path/bash-scripts/ui_runner.sh"
 
-grep -qxF "alias samadhaan_cli='sh $path/runner.sh'" ~/.bashrc || echo "alias VE-lint_cli='sh $path/runner.sh'" >> ~/.bashrc
-grep -qxF "alias samadhaan_ui='sh $path/ui_runner.sh'" ~/.bashrc || echo "alias VE-lint_ui='sh $path/ui_runner.sh'" >> ~/.bashrc
+grep -qxF "alias samadhaan_cli='sh $path/bash-scripts/runner.sh'" ~/.bashrc || echo "alias VE-lint_cli='sh $path/bash-scrips/runner.sh'" >> ~/.bashrc
+grep -qxF "alias samadhaan_ui='sh $path/bash-scrips/ui_runner.sh'" ~/.bashrc || echo "alias VE-lint_ui='sh $path/bash-scrips/ui_runner.sh'" >> ~/.bashrc
 
 if [ -n "$BASH_VERSION" ]; then
     . ~/.bashrc
+    source ~/.bashrc
 else
     echo "Alias added, but reload .bashrc manually: source ~/.bashrc"
 fi
