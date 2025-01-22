@@ -38,12 +38,12 @@ fi
 chmod +x "$path/bash-scripts/runner.sh"
 chmod +x "$path/bash-scripts/ui_runner.sh"
 
-grep -qxF "alias samadhaan_cli='sh $path/bash-scripts/runner.sh'" ~/.bashrc || echo "alias VE-lint_cli='sh $path/bash-scrips/runner.sh'" >> ~/.bashrc
-grep -qxF "alias samadhaan_ui='sh $path/bash-scrips/ui_runner.sh'" ~/.bashrc || echo "alias VE-lint_ui='sh $path/bash-scrips/ui_runner.sh'" >> ~/.bashrc
+grep -qxF "alias samadhaan_cli='sh $path/bash-scripts/runner.sh'" ~/.bashrc || echo "alias VE-lint_cli='sh $path/bash-scripts/runner.sh'" >> ~/.bashrc
+grep -qxF "alias samadhaan_ui='sh $path/bash-scripts/ui_runner.sh'" ~/.bashrc || echo "alias VE-lint_ui='sh $path/bash-scripts/ui_runner.sh'" >> ~/.bashrc
 
 if [ -n "$BASH_VERSION" ]; then
     . ~/.bashrc
-    source ~/.bashrc
+    # source ~/.bashrc
 else
     echo "Alias added, but reload .bashrc manually: source ~/.bashrc"
 fi
